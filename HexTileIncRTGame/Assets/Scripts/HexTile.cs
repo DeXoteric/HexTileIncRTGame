@@ -6,23 +6,26 @@ public class HexTile : MonoBehaviour
 
     private void Start()
     {
-        HexTileMapManager.instance.unusedTiles.Add(gameObject);
-        tileIndex = HexTileMapManager.instance.unusedTiles.Count - 1;
+        HexTileMapManager.instance.unusedHexes.Add(gameObject);
+        tileIndex = HexTileMapManager.instance.unusedHexes.Count - 1;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Capsule Collider")
         {
+            HexTileMapManager.instance.unusedHexes.Remove(gameObject);
+            HexTileMapManager.instance.activeHexes.Remove(gameObject);
             Destroy(gameObject);
-            HexTileMapManager.instance.unusedTiles.Remove(gameObject);
-            HexTileMapManager.instance.activeTiles.Remove(gameObject);
         }
 
-        if (other.name == "Mesh Collider")
+        if (other.name == "Mesh Collider" )
         {
-            gameObject.tag = "Active Hex";
-            HexTileMapManager.instance.activeTiles.Add(gameObject);
+            if (gameObject.tag == "Empty Hex")
+            {
+                HexTileMapManager.instance.activeHexes.Add(gameObject);
+                gameObject.tag = "Active Hex";
+            }
         }
     }
 }
