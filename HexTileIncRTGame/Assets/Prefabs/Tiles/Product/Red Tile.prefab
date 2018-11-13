@@ -109,6 +109,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1955255279374776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4438936917666364}
+  - component: {fileID: 136596740179485744}
+  - component: {fileID: 54719155253731942}
+  - component: {fileID: 114812425768225356}
+  m_Layer: 0
+  m_Name: Tile Type Collider
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4163631021490722
 Transform:
   m_ObjectHideFlags: 1
@@ -121,6 +139,7 @@ Transform:
   m_Children:
   - {fileID: 4788196503776694}
   - {fileID: 4219336947830740}
+  - {fileID: 4438936917666364}
   - {fileID: 4402225556179974}
   - {fileID: 4769528468792976}
   m_Father: {fileID: 0}
@@ -145,6 +164,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451083025477550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4163631021490722}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4438936917666364
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955255279374776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -177,7 +209,7 @@ Transform:
   m_Children:
   - {fileID: 4625092033111044}
   m_Father: {fileID: 4163631021490722}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4788196503776694
 Transform:
@@ -276,6 +308,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1684878196465050}
   m_Mesh: {fileID: 4300000, guid: 43083e6dbf2122e44a4526e5a11407b3, type: 3}
+--- !u!54 &54719155253731942
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955255279374776}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &54810198317754050
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -317,9 +364,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: Product
-  baseFoodOutput: 0
-  baseProductionOutput: 2
-  baseIncomeOutput: 2
+  baseIncomeOutput: 3
+  tileType: red
+  incomeOutput: 0
+  bonusMultiplier: 0
+--- !u!114 &114812425768225356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955255279374776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db2990afab8ca44aa39d756dd8bfbc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136184264186171004
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -333,3 +392,16 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136596740179485744
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955255279374776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.05
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.1, z: 0}

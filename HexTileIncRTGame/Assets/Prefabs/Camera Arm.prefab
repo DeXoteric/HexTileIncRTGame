@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114768641863826732}
   m_Layer: 0
   m_Name: Camera Arm
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,4 +129,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470ce2df46df0f542994869a501fe8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPanSpeed: 0.75
+  cameraMousePanSpeed: 1
+  cameraMobilePanSpeed: 0.5

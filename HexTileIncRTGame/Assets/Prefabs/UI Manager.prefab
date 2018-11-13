@@ -53,6 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeTileText: {fileID: 0}
   cancelPlacementButton: {fileID: 0}
-  foodText: {fileID: 0}
-  resourcesText: {fileID: 0}
-  researchText: {fileID: 0}
+  incomeText: {fileID: 0}

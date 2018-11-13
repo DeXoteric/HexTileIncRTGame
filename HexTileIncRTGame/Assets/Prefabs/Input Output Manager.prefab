@@ -51,6 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41eef1bf4dbd404e995d713d83b8c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalFoodOutput: 0
-  totalResourceOutput: 0
-  totalResearchOutput: 0
+  currentIncome: 0
+  totalIncomeOutput: 0

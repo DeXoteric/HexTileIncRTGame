@@ -3,13 +3,12 @@
 public class Tile : MonoBehaviour
 {
     [SerializeField] private string tileName;
-    [SerializeField] private float baseFoodOutput;
-    [SerializeField] private float baseProductionOutput;
+
     [SerializeField] private float baseIncomeOutput;
 
-    public float foodOutput { get; private set; }
-    public float productionOutput { get; private set; }
-    public float incomeOutput { get; private set; }
+    public float incomeOutput;
+    public float bonusMultiplier;
+    private int tileTier = 1;
 
     private void Start()
     {
@@ -17,11 +16,22 @@ public class Tile : MonoBehaviour
 
         gameObject.name = tileName;
 
-        foodOutput = baseFoodOutput;
-        productionOutput = baseProductionOutput;
-        incomeOutput = baseIncomeOutput;
-        
+        incomeOutput = GetIncomeOutput();
+
         InputOutputManager.instance.UpdateTotalOutputs();
         UIManager.instance.UpdateOutputDataDisplay();
+    }
+
+    public float GetIncomeOutput()
+    {
+        var output = baseIncomeOutput + (tileTier - 1) + (baseIncomeOutput * bonusMultiplier / 100);
+
+        return output;
+    }
+
+    public void AddBonusMultiplier()
+    {
+        bonusMultiplier += 10;
+        incomeOutput = GetIncomeOutput();
     }
 }

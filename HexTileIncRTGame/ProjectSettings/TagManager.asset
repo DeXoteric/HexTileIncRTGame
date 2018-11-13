@@ -8,6 +8,8 @@ TagManager:
   - Empty Hex
   - Active Hex
   - Placed Tile
+  - Red
+  - Blue
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - PostProcessing
   - Click Mask
-  - 
+  - TileType
   - 
   - 
   - 
