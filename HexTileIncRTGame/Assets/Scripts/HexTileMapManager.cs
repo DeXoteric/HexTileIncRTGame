@@ -5,15 +5,15 @@ public class HexTileMapManager : MonoBehaviour
 {
     public static HexTileMapManager instance;
 
-    [SerializeField] private GameObject startingTile;
+    [SerializeField] private GameObject hqTile;
+
     [SerializeField] private LayerMask clickMask;
 
     public GameObject SelectedTile { get; set; }
 
     public List<GameObject> unusedHexes = new List<GameObject>();
     public List<GameObject> activeHexes = new List<GameObject>();
-
-    public bool newGame = true;
+    public List<GameObject> placedTiles = new List<GameObject>();
 
     private void Awake()
     {
@@ -22,12 +22,14 @@ public class HexTileMapManager : MonoBehaviour
 
     private void Start()
     {
-        if (newGame)
+        if (GameManager.instance.isNewGame)
         {
-            GameObject tile = Instantiate(startingTile, Vector3.zero, Quaternion.identity);
-            tile.name = startingTile.name;
+            GameObject tile = Instantiate(hqTile, Vector3.zero, Quaternion.identity);
+            tile.name = hqTile.name;
             tile.transform.parent = transform;
             tile.tag = "Placed Tile";
+
+            placedTiles.Add(tile);
         }
     }
 
@@ -57,9 +59,9 @@ public class HexTileMapManager : MonoBehaviour
         if (SelectedTile != null)
         {
             PlaceTile();
-        } else
+        }
+        else
         {
-
         }
     }
 
@@ -75,11 +77,13 @@ public class HexTileMapManager : MonoBehaviour
                 if (hit.rigidbody.tag == "Active Hex")
                 {
                     var tilePosition = hit.rigidbody.transform.position;
-                    GameObject placedTile =  Instantiate(SelectedTile, tilePosition, Quaternion.identity);
+                    GameObject tile = Instantiate(SelectedTile, tilePosition, Quaternion.identity);
 
-                    placedTile.name = SelectedTile.name;
-                    placedTile.transform.parent = transform;
-                    placedTile.tag = "Placed Tile";
+                    tile.name = SelectedTile.name;
+                    tile.transform.parent = transform;
+                    tile.tag = "Placed Tile";
+
+                    placedTiles.Add(tile);
 
                     UIManager.instance.DisableTilePlacementUIElements();
                     ResetSelectedTile();

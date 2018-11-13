@@ -1,17 +1,37 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance;
 
-    public bool IsOnMobile { get; set; }
+    [SerializeField] private float tickTimer;
+
+    public int placedTiles;
+
+    public bool isNewGame = true;
+    public bool IsOnMobile { get; private set; }
 
     private void Awake()
     {
         instance = this;
         CheckIfOnMobile();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(Tick());
+    }
+
+    private IEnumerator Tick()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(tickTimer);
+            InputOutputManager.instance.UpdateTotalOutputs();
+            InputOutputManager.instance.UpdateCurrentResources();
+            UIManager.instance.UpdateOutputDataDisplay();
+        }
     }
 
     private void CheckIfOnMobile()

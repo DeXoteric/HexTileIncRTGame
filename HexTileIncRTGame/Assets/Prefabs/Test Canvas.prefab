@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 114914916531759660}
   - component: {fileID: 114193427653766126}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Test Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f62ab21739bb6a4e8c84361113d641a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1572185534132296, guid: 0d4832df5e576d1469d63513cf9e2635, type: 2}
+  tilePrefab: {fileID: 1572185534132296, guid: 6c1c5c9cb2cbc9047b8ff4c610be6378, type: 2}
 --- !u!114 &114441507924277230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f62ab21739bb6a4e8c84361113d641a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1572185534132296, guid: daab89cc78f36aa489e33a6c657b01b3, type: 2}
+  tilePrefab: {fileID: 1572185534132296, guid: 1c5a2b103184343478501a1db2328fe7, type: 2}
 --- !u!114 &114791954400114204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f62ab21739bb6a4e8c84361113d641a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1572185534132296, guid: 56993c69bb597c44ca5c5d2d96a71340, type: 2}
+  tilePrefab: {fileID: 1572185534132296, guid: 634c722f6ea90ce4496cf588a18938e6, type: 2}
 --- !u!114 &114891446144003790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -890,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 8, y: -456}
   m_SizeDelta: {x: -636, y: 80.9}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224307041496224460
@@ -1006,7 +1006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -81.369995}
+  m_AnchoredPosition: {x: 8, y: -537.3701}
   m_SizeDelta: {x: -1620, y: 75}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224784784221087896
