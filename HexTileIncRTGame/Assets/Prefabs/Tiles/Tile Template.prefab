@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4788196503776694}
   - component: {fileID: 64477703993936284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,6 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: 
+  baseIncomeOutput: 0
+  incomeOutput: 0
+  bonusMultiplier: 0
 --- !u!136 &136184264186171004
 CapsuleCollider:
   m_ObjectHideFlags: 1

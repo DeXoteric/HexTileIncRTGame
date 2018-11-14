@@ -52,9 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hqTile: {fileID: 1572185534132296, guid: 733e4a17cdefe06469a73c356ea175bb, type: 2}
-  clickMask:
+  tilePlacementMask:
     serializedVersion: 2
     m_Bits: 512
+  tileInfoMask:
+    serializedVersion: 2
+    m_Bits: 1024
   unusedHexes: []
   activeHexes: []
   placedTiles: []

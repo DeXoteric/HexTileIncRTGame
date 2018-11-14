@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -606,9 +606,20 @@ Prefab:
       propertyPath: incomeText
       value: 
       objectReference: {fileID: 325996231}
+    - target: {fileID: 114852851210051302, guid: cbdbfbf5fab3d3f4f86ce1c39cca6e91,
+        type: 2}
+      propertyPath: tileInfoPanel
+      value: 
+      objectReference: {fileID: 1550853192}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbdbfbf5fab3d3f4f86ce1c39cca6e91, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1550853192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114944294317488864, guid: 6ee40b61bf252f64294bb7efce8c1f12,
+    type: 2}
+  m_PrefabInternal: {fileID: 1038838933}
+  m_Script: {fileID: 11500000, guid: 3d889cabe05cec245bec517be5c8ba89, type: 3}
 --- !u!1001 &1702560486
 Prefab:
   m_ObjectHideFlags: 0

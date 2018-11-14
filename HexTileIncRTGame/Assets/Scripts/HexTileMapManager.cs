@@ -7,7 +7,8 @@ public class HexTileMapManager : MonoBehaviour
 
     [SerializeField] private GameObject hqTile;
 
-    [SerializeField] private LayerMask clickMask;
+    [SerializeField] private LayerMask tilePlacementMask;
+    [SerializeField] private LayerMask tileInfoMask;
 
     public GameObject SelectedTile { get; set; }
 
@@ -62,6 +63,7 @@ public class HexTileMapManager : MonoBehaviour
         }
         else
         {
+            GetTileInfo();
         }
     }
 
@@ -72,7 +74,7 @@ public class HexTileMapManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100f, clickMask))
+            if (Physics.Raycast(ray, out hit, 100f, tilePlacementMask))
             {
                 if (hit.rigidbody.tag == "Active Hex")
                 {
@@ -89,6 +91,23 @@ public class HexTileMapManager : MonoBehaviour
                     ResetSelectedTile();
                     HideActiveHexes();
                 }
+            }
+        }
+    }
+
+    private void GetTileInfo()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100f, tileInfoMask))
+            {
+                var hitGameObject =  hit.collider.GetComponentInParent<Tile>();
+
+                UIManager.instance.EnableTileInfoPanel();
+                FindObjectOfType<TileInfoPanel>().SetSelectedTile(hitGameObject);
             }
         }
     }

@@ -11,9 +11,16 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI incomeText;
 
+    [SerializeField] private TileInfoPanel tileInfoPanel;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void EnableTilePlacementUIElements(string tileName)
@@ -33,4 +40,11 @@ public class UIManager : MonoBehaviour
     {
         incomeText.text = "Income: " + InputOutputManager.instance.currentIncome + " +" + InputOutputManager.instance.totalIncomeOutput + " per tick";
     }
+
+    public void EnableTileInfoPanel()
+    {
+        tileInfoPanel.gameObject.SetActive(true);
+    }
+
+    
 }

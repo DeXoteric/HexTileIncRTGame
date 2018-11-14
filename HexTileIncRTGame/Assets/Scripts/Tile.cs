@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
 
     public float incomeOutput;
     public float bonusMultiplier;
-    private int tileTier = 1;
+    public int tileTier = 1;
 
     private void Start()
     {
