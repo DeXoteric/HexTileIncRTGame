@@ -1,20 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
-public class TileInfoPanel : MonoBehaviour {
-
-     public TextMeshProUGUI tileNameText;
-    public TextMeshProUGUI tileTierText;
-    public TextMeshProUGUI tileIncomeText;
+public class TileInfoPanel : MonoBehaviour
+{
+    [SerializeField] private TextMeshProUGUI tileNameText;
+    [SerializeField] private TextMeshProUGUI tileTierText;
+    [SerializeField] private TextMeshProUGUI tileIncomeText;
 
     private Tile selectedTile;
 
     public void SetSelectedTile(Tile selectedTile)
     {
         this.selectedTile = selectedTile;
-
 
         UpdateTileInfo();
     }
@@ -24,11 +21,5 @@ public class TileInfoPanel : MonoBehaviour {
         tileNameText.text = selectedTile.name;
         tileTierText.text = selectedTile.tileTier.ToString();
         tileIncomeText.text = selectedTile.GetIncomeOutput().ToString();
-    }
-    
-
-    public void ClosePanel()
-    {
-        gameObject.SetActive(false);
     }
 }

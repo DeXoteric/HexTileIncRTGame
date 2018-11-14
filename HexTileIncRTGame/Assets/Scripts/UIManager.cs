@@ -17,11 +17,7 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
     }
-
-    private void Start()
-    {
-        
-    }
+    
 
     public void EnableTilePlacementUIElements(string tileName)
     {
@@ -41,10 +37,12 @@ public class UIManager : MonoBehaviour
         incomeText.text = "Income: " + InputOutputManager.instance.currentIncome + " +" + InputOutputManager.instance.totalIncomeOutput + " per tick";
     }
 
-    public void EnableTileInfoPanel()
+    public void ToggleTileInfoPanel()
     {
-        tileInfoPanel.gameObject.SetActive(true);
+        tileInfoPanel.gameObject.SetActive(!tileInfoPanel.gameObject.activeInHierarchy);
     }
 
     
+
+
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HexTileMapManager : MonoBehaviour
 {
@@ -99,14 +100,16 @@ public class HexTileMapManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100f, tileInfoMask))
             {
-                var hitGameObject =  hit.collider.GetComponentInParent<Tile>();
+                var hitGameObject = hit.collider.GetComponentInParent<Tile>();
 
-                UIManager.instance.EnableTileInfoPanel();
+                UIManager.instance.ToggleTileInfoPanel();
                 FindObjectOfType<TileInfoPanel>().SetSelectedTile(hitGameObject);
             }
         }
