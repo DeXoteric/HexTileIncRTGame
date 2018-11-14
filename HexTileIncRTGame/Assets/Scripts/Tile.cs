@@ -2,9 +2,10 @@
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private string tileName;
-
-    [SerializeField] private float baseIncomeOutput;
+    public string tileName;
+    public Sprite tileSprite;
+    public float baseIncomeOutput;
+    public float baseCost;
 
     public float incomeOutput;
     public float bonusMultiplier;

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI incomeText;
 
     [SerializeField] private TileInfoPanel tileInfoPanel;
+    [SerializeField] private ChooseTilePanel chooseTilePanel;
 
     private void Awake()
     {
@@ -39,5 +40,10 @@ public class UIManager : MonoBehaviour
     public void ToggleTileInfoPanel()
     {
         tileInfoPanel.gameObject.SetActive(!tileInfoPanel.gameObject.activeInHierarchy);
+    }
+
+    public void ToggleChooseTilePanel()
+    {
+        chooseTilePanel.gameObject.SetActive(!chooseTilePanel.gameObject.activeInHierarchy);
     }
 }

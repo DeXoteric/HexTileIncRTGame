@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int placedTiles;
 
     public bool isNewGame = true;
+    public bool rerollTiles = true;
     public bool IsOnMobile { get; private set; }
 
     private void Awake()

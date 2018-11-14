@@ -55,3 +55,4 @@ MonoBehaviour:
   cancelPlacementButton: {fileID: 0}
   incomeText: {fileID: 0}
   tileInfoPanel: {fileID: 0}
+  chooseTilePanel: {fileID: 0}

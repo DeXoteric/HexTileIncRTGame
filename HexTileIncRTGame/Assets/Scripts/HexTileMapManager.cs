@@ -11,7 +11,9 @@ public class HexTileMapManager : MonoBehaviour
     [SerializeField] private LayerMask tilePlacementMask;
     [SerializeField] private LayerMask tileInfoMask;
 
-    public GameObject SelectedTile { get; set; }
+    public GameObject tileTemplatePrefab;
+
+    public NewTileSO selectedTileSO;
 
     public List<GameObject> unusedHexes = new List<GameObject>();
     public List<GameObject> activeHexes = new List<GameObject>();
@@ -53,12 +55,12 @@ public class HexTileMapManager : MonoBehaviour
 
     public void ResetSelectedTile()
     {
-        SelectedTile = null;
+        selectedTileSO = null;
     }
 
     private void Update()
     {
-        if (SelectedTile != null)
+        if (selectedTileSO != null)
         {
             PlaceTile();
         }
@@ -80,9 +82,13 @@ public class HexTileMapManager : MonoBehaviour
                 if (hit.rigidbody.tag == "Active Hex")
                 {
                     var tilePosition = hit.rigidbody.transform.position;
-                    GameObject tile = Instantiate(SelectedTile, tilePosition, Quaternion.identity);
+                    GameObject tile = Instantiate(tileTemplatePrefab, tilePosition, Quaternion.identity);
 
-                    tile.name = SelectedTile.name;
+                    tile.name = selectedTileSO.name;
+                    tile.GetComponent<Tile>().tileName = selectedTileSO.tileName;
+                    tile.GetComponent<Tile>().baseIncomeOutput = selectedTileSO.tileBaseIncome;
+                    tile.GetComponent<Tile>().baseCost = selectedTileSO.tileBaseCost;
+                    tile.GetComponent<Tile>().GetComponentInChildren<TileTypeCollider>().tag = selectedTileSO.tileType.ToString();
                     tile.transform.parent = transform;
                     tile.tag = "Placed Tile";
 

@@ -9,8 +9,7 @@ TagManager:
   - Active Hex
   - Placed Tile
   - Farm
-  - Red
-  - Blue
+  - Mine
   layers:
   - Default
   - TransparentFX

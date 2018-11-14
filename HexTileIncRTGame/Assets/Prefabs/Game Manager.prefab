@@ -54,3 +54,4 @@ MonoBehaviour:
   tickTimer: 5
   placedTiles: 0
   isNewGame: 1
+  rerollTiles: 1
