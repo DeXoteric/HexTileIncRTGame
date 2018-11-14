@@ -34,7 +34,7 @@ public class CameraPan : MonoBehaviour
 
             Vector3 direction = new Vector2(Input.mousePosition.x - touchStart.x, Input.mousePosition.y - touchStart.y);
             touchStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            transform.position = new Vector3(transform.position.x - direction.x * cameraPanSpeed * Time.deltaTime, transform.position.y, transform.position.z - direction.y * cameraPanSpeed * Time.deltaTime);
+            transform.position = new Vector2(transform.position.x - direction.x * cameraPanSpeed * Time.deltaTime, transform.position.y- direction.y * cameraPanSpeed * Time.deltaTime);
         }
     }
 }

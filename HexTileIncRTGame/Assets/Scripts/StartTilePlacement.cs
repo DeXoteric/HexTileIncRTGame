@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class StartTilePlacement : MonoBehaviour {
-
-    [SerializeField] GameObject tilePrefab;
+public class StartTilePlacement : MonoBehaviour
+{
+    [SerializeField] private GameObject tilePrefab;
 
     public void PlaceSelectedTile()
     {
@@ -18,16 +16,13 @@ public class StartTilePlacement : MonoBehaviour {
         HexTileMapManager.instance.SelectedTile = tilePrefab;
     }
 
-	private void EnableActiveHexes()
+    private void EnableActiveHexes()
     {
         HexTileMapManager.instance.ShowActiveHexes();
-        
     }
 
     private void EnableUIElements()
     {
         UIManager.instance.EnableTilePlacementUIElements(tilePrefab.name);
     }
-
-
 }

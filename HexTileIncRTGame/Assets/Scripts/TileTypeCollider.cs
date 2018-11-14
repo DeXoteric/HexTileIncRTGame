@@ -2,11 +2,13 @@
 
 public class TileTypeCollider : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.tag == other.tag)
+        if (gameObject.tag == collision.tag)
         {
-            other.GetComponentInParent<Tile>().AddBonusMultiplier();
+            collision.GetComponentInParent<Tile>().AddBonusMultiplier();
         }
     }
 }

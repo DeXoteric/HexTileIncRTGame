@@ -26,7 +26,7 @@ public class HexTileMapManager : MonoBehaviour
     {
         if (GameManager.instance.isNewGame)
         {
-            GameObject tile = Instantiate(hqTile, Vector3.zero, Quaternion.identity);
+            GameObject tile = Instantiate(hqTile, Vector2.zero, Quaternion.identity);
             tile.name = hqTile.name;
             tile.transform.parent = transform;
             tile.tag = "Placed Tile";
@@ -39,7 +39,7 @@ public class HexTileMapManager : MonoBehaviour
     {
         foreach (var hex in activeHexes)
         {
-            hex.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            hex.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
@@ -47,7 +47,7 @@ public class HexTileMapManager : MonoBehaviour
     {
         foreach (var hex in activeHexes)
         {
-            hex.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            hex.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
@@ -73,9 +73,9 @@ public class HexTileMapManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tilePlacementMask);
 
-            if (Physics.Raycast(ray, out hit, 100f, tilePlacementMask))
+            if (hit.collider != null)
             {
                 if (hit.rigidbody.tag == "Active Hex")
                 {
@@ -103,9 +103,9 @@ public class HexTileMapManager : MonoBehaviour
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tileInfoMask);
 
-            if (Physics.Raycast(ray, out hit, 100f, tileInfoMask))
+            if (hit.collider != null)
             {
                 var hitGameObject = hit.collider.GetComponentInParent<Tile>();
 

@@ -18,8 +18,7 @@ public class Tile : MonoBehaviour
 
         incomeOutput = GetIncomeOutput();
 
-        InputOutputManager.instance.UpdateTotalOutputs();
-        UIManager.instance.UpdateOutputDataDisplay();
+        RefreshData();
     }
 
     public float GetIncomeOutput()
@@ -33,5 +32,13 @@ public class Tile : MonoBehaviour
     {
         bonusMultiplier += 10;
         incomeOutput = GetIncomeOutput();
+
+        RefreshData();
+    }
+
+    private void RefreshData()
+    {
+        InputOutputManager.instance.UpdateTotalOutputs();
+        UIManager.instance.UpdateOutputDataDisplay();
     }
 }
