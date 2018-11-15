@@ -28,7 +28,7 @@ public class ChooseTilePanel : MonoBehaviour
 
     private void Update()
     {
-        if (tileOneCost <= InputOutputManager.instance.currentIncome)
+        if (tileOneCost <= InputOutputManager.instance.currentMoney)
         {
             tileButtonOne.interactable = true;
                 
@@ -37,7 +37,7 @@ public class ChooseTilePanel : MonoBehaviour
             tileButtonOne.interactable = false;
                 
         }
-        if (tileTwoCost <= InputOutputManager.instance.currentIncome)
+        if (tileTwoCost <= InputOutputManager.instance.currentMoney)
         {
             tileButtonTwo.interactable = true;
 
@@ -47,7 +47,7 @@ public class ChooseTilePanel : MonoBehaviour
             tileButtonTwo.interactable = false;
 
         }
-        if (tileThreeCost <= InputOutputManager.instance.currentIncome)
+        if (tileThreeCost <= InputOutputManager.instance.currentMoney)
         {
             tileButtonThree.interactable = true;
 

@@ -94,7 +94,7 @@ public class HexTileMapManager : MonoBehaviour
 
                     placedTiles.Add(tile);
 
-                    InputOutputManager.instance.currentIncome -= MathFunctions.CalculateTileCost(tile.GetComponent<Tile>().tileBaseCost);
+                    InputOutputManager.instance.currentMoney -= MathFunctions.CalculateTileCost(tile.GetComponent<Tile>().tileBaseCost);
 
                     UIManager.instance.DisableTilePlacementUIElements();
                     ResetSelectedTile();

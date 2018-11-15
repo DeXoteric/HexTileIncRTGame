@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateOutputDataDisplay()
     {
-        incomeText.text = "Income: " + InputOutputManager.instance.currentIncome.ToString("F2") + " +" + InputOutputManager.instance.totalIncomeOutput.ToString("F2") + " per tick";
+        incomeText.text = "Income: " + InputOutputManager.instance.currentMoney.ToString("F2") + " +" + InputOutputManager.instance.totalIncome.ToString("F2") + " per tick";
     }
 
     public void ToggleTileInfoPanel()

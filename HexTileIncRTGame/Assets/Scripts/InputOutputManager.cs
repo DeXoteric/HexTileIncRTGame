@@ -4,9 +4,9 @@ public class InputOutputManager : MonoBehaviour
 {
     public static InputOutputManager instance;
 
-    public float currentIncome;
+    public float currentMoney;
 
-    public float totalIncomeOutput;
+    public float totalIncome;
 
     private void Awake()
     {
@@ -25,16 +25,16 @@ public class InputOutputManager : MonoBehaviour
 
     public void UpdateTotalOutputs()
     {
-        totalIncomeOutput = 0;
+        totalIncome = 0;
 
         foreach (var tile in HexTileMapManager.instance.placedTiles)
         {
-            totalIncomeOutput += tile.GetComponent<Tile>().GetTileIncome();
+            totalIncome += tile.GetComponent<Tile>().GetTileIncome();
         }
     }
 
     public void UpdateCurrentResources()
     {
-        currentIncome += totalIncomeOutput;
+        currentMoney += totalIncome;
     }
 }
