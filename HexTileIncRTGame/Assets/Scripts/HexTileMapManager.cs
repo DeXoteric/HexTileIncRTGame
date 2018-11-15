@@ -86,17 +86,20 @@ public class HexTileMapManager : MonoBehaviour
 
                     tile.name = selectedTileSO.name;
                     tile.GetComponent<Tile>().tileName = selectedTileSO.tileName;
-                    tile.GetComponent<Tile>().baseIncomeOutput = selectedTileSO.tileBaseIncome;
-                    tile.GetComponent<Tile>().baseCost = selectedTileSO.tileBaseCost;
+                    tile.GetComponent<Tile>().tileBaseIncome = selectedTileSO.tileBaseIncome;
+                    tile.GetComponent<Tile>().tileBaseCost = selectedTileSO.tileBaseCost;
                     tile.GetComponent<Tile>().GetComponentInChildren<TileTypeCollider>().tag = selectedTileSO.tileType.ToString();
                     tile.transform.parent = transform;
                     tile.tag = "Placed Tile";
 
                     placedTiles.Add(tile);
 
+                    InputOutputManager.instance.currentIncome -= MathFunctions.CalculateTileCost(tile.GetComponent<Tile>().tileBaseCost);
+
                     UIManager.instance.DisableTilePlacementUIElements();
                     ResetSelectedTile();
                     HideActiveHexes();
+                    GameManager.instance.rerollTiles = true;
                 }
             }
         }
@@ -104,7 +107,7 @@ public class HexTileMapManager : MonoBehaviour
 
     private void GetTileInfo()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && selectedTileSO == null)
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
 

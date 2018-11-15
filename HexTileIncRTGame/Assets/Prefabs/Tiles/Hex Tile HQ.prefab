@@ -206,10 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: Headquarter
-  baseIncomeOutput: 5
-  incomeOutput: 0
-  bonusMultiplier: 0
+  tileSprite: {fileID: 0}
+  tileBaseIncome: 5
+  tileBaseCost: 0
   tileTier: 1
+  tileIncome: 0
+  adjacencyMultiplier: 0
 --- !u!114 &114643310107546616
 MonoBehaviour:
   m_ObjectHideFlags: 1

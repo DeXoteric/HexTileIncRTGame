@@ -29,7 +29,7 @@ public class InputOutputManager : MonoBehaviour
 
         foreach (var tile in HexTileMapManager.instance.placedTiles)
         {
-            totalIncomeOutput += tile.GetComponent<Tile>().GetIncomeOutput();
+            totalIncomeOutput += tile.GetComponent<Tile>().GetTileIncome();
         }
     }
 

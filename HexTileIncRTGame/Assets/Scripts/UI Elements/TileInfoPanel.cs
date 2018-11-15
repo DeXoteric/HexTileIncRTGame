@@ -20,6 +20,6 @@ public class TileInfoPanel : MonoBehaviour
     {
         tileNameText.text = selectedTile.name;
         tileTierText.text = selectedTile.tileTier.ToString();
-        tileIncomeText.text = selectedTile.GetIncomeOutput().ToString();
+        tileIncomeText.text = selectedTile.GetTileIncome().ToString();
     }
 }

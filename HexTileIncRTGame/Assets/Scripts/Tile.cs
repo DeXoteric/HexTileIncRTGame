@@ -4,12 +4,13 @@ public class Tile : MonoBehaviour
 {
     public string tileName;
     public Sprite tileSprite;
-    public float baseIncomeOutput;
-    public float baseCost;
+    public float tileBaseIncome;
+    public float tileBaseCost;
 
-    public float incomeOutput;
-    public float bonusMultiplier;
     public int tileTier = 1;
+    public float tileIncome;
+    public float adjacencyMultiplier;
+    
 
     private void Start()
     {
@@ -17,22 +18,22 @@ public class Tile : MonoBehaviour
 
         gameObject.name = tileName;
 
-        incomeOutput = GetIncomeOutput();
+        tileIncome = GetTileIncome();
 
         RefreshData();
     }
 
-    public float GetIncomeOutput()
+    public float GetTileIncome()
     {
-        var output = baseIncomeOutput + (tileTier - 1) + (baseIncomeOutput * bonusMultiplier / 100);
+        var output = tileBaseIncome + (tileTier - 1) + (tileBaseIncome * adjacencyMultiplier / 100);
 
         return output;
     }
 
     public void AddBonusMultiplier()
     {
-        bonusMultiplier += 10;
-        incomeOutput = GetIncomeOutput();
+        adjacencyMultiplier += 10;
+        tileIncome = GetTileIncome();
 
         RefreshData();
     }
