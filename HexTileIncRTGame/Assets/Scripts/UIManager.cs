@@ -37,13 +37,29 @@ public class UIManager : MonoBehaviour
         incomeText.text = "Income: " + InputOutputManager.instance.currentMoney.ToString("F2") + " +" + InputOutputManager.instance.totalIncome.ToString("F2") + " per tick";
     }
 
-    public void ToggleTileInfoPanel()
+    public void EnableTileInfoPanel()
     {
-        tileInfoPanel.gameObject.SetActive(!tileInfoPanel.gameObject.activeInHierarchy);
+        if (!tileInfoPanel.gameObject.activeInHierarchy)
+        {
+            tileInfoPanel.gameObject.SetActive(true);
+        }
+    }
+
+    public void DisableTileInfoPanel()
+    {
+        tileInfoPanel.gameObject.SetActive(false);
     }
 
     public void ToggleChooseTilePanel()
     {
         chooseTilePanel.gameObject.SetActive(!chooseTilePanel.gameObject.activeInHierarchy);
+    }
+
+    public void DeselectTile() //TODO currently it's a brute force solution, move it, change it
+    {
+        foreach (var tile in HexTileMapManager.instance.placedTiles)
+        {
+            tile.tileHighlight.enabled = false;
+        }
     }
 }

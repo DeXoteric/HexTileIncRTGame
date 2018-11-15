@@ -13,11 +13,12 @@ public class HexTileMapManager : MonoBehaviour
 
     public GameObject tileTemplatePrefab;
 
+    public Tile selectedTile;
     public NewTileSO selectedTileSO;
 
     public List<GameObject> unusedHexes = new List<GameObject>();
     public List<GameObject> activeHexes = new List<GameObject>();
-    public List<GameObject> placedTiles = new List<GameObject>();
+    public List<Tile> placedTiles = new List<Tile>();
 
     private void Awake()
     {
@@ -33,7 +34,19 @@ public class HexTileMapManager : MonoBehaviour
             tile.transform.parent = transform;
             tile.tag = "Placed Tile";
 
-            placedTiles.Add(tile);
+            placedTiles.Add(tile.GetComponent<Tile>());
+        }
+    }
+
+    private void Update()
+    {
+        if (selectedTileSO != null)
+        {
+            PlaceTile();
+        }
+        else
+        {
+            GetTileInfo();
         }
     }
 
@@ -58,16 +71,9 @@ public class HexTileMapManager : MonoBehaviour
         selectedTileSO = null;
     }
 
-    private void Update()
+    public int GetSelectedTileIndex()
     {
-        if (selectedTileSO != null)
-        {
-            PlaceTile();
-        }
-        else
-        {
-            GetTileInfo();
-        }
+        return placedTiles.IndexOf(selectedTile);
     }
 
     private void PlaceTile()
@@ -88,7 +94,7 @@ public class HexTileMapManager : MonoBehaviour
                     tile.transform.parent = transform;
                     tile.tag = "Placed Tile";
 
-                    placedTiles.Add(tile);
+                    placedTiles.Add(tile.GetComponent<Tile>());
 
                     UIManager.instance.DisableTilePlacementUIElements();
                     ResetSelectedTile();
@@ -101,7 +107,7 @@ public class HexTileMapManager : MonoBehaviour
 
     private void GetTileInfo()
     {
-        if (Input.GetMouseButtonDown(0) && selectedTileSO == null)
+        if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
@@ -110,10 +116,10 @@ public class HexTileMapManager : MonoBehaviour
 
             if (hit.collider != null)
             {
-                var hitGameObject = hit.collider.GetComponentInParent<Tile>();
+                selectedTile = hit.collider.GetComponentInParent<Tile>();
 
-                UIManager.instance.ToggleTileInfoPanel();
-                FindObjectOfType<TileInfoPanel>().SetSelectedTile(hitGameObject);
+                UIManager.instance.EnableTileInfoPanel();
+                FindObjectOfType<TileInfoPanel>().ShowSelectedTile(selectedTile);
             }
         }
     }

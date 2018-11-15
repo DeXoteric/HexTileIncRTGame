@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour
 
     public string tileName;
     public Sprite tileSprite;
+    public SpriteRenderer tileHighlight;
     public float tileBaseIncome;
     public float tileBaseCost;
 
