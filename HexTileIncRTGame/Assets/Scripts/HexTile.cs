@@ -6,8 +6,8 @@ public class HexTile : MonoBehaviour
 
     private void Start()
     {
-        HexTileMapManager.instance.unusedHexes.Add(gameObject);
-        tileIndex = HexTileMapManager.instance.unusedHexes.Count - 1;
+        Board.instance.unusedHexes.Add(gameObject);
+        tileIndex = Board.instance.unusedHexes.Count - 1;
     }
 
     

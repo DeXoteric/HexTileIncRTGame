@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateOutputDataDisplay()
     {
-        incomeText.text = "Income: " + InputOutputManager.instance.currentMoney.ToString("F2") + " +" + InputOutputManager.instance.totalIncome.ToString("F2") + " per tick";
+        incomeText.text = "Income: " + IncomeManager.instance.currentMoney.ToString("F2") + " +" + IncomeManager.instance.totalIncome.ToString("F2") + " per tick";
     }
 
     public void EnableTileInfoPanel()
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
     public void DeselectTile() //TODO currently it's a brute force solution, move it, change it
     {
-        foreach (var tile in HexTileMapManager.instance.placedTiles)
+        foreach (var tile in Board.instance.placedTiles)
         {
             tile.tileHighlight.enabled = false;
         }

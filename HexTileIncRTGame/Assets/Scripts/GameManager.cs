@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tickTimer);
-            InputOutputManager.instance.UpdateTotalOutputs();
-            InputOutputManager.instance.UpdateCurrentResources();
+            IncomeManager.instance.UpdateTotalOutputs();
+            IncomeManager.instance.UpdateCurrentResources();
             UIManager.instance.UpdateOutputDataDisplay();
         }
     }

@@ -28,7 +28,7 @@ public class ChooseTilePanel : MonoBehaviour
 
     private void Update()
     {
-        if (tileOneCost <= InputOutputManager.instance.currentMoney)
+        if (tileOneCost <= IncomeManager.instance.currentMoney)
         {
             tileButtonOne.interactable = true;
                 
@@ -37,7 +37,7 @@ public class ChooseTilePanel : MonoBehaviour
             tileButtonOne.interactable = false;
                 
         }
-        if (tileTwoCost <= InputOutputManager.instance.currentMoney)
+        if (tileTwoCost <= IncomeManager.instance.currentMoney)
         {
             tileButtonTwo.interactable = true;
 
@@ -47,7 +47,7 @@ public class ChooseTilePanel : MonoBehaviour
             tileButtonTwo.interactable = false;
 
         }
-        if (tileThreeCost <= InputOutputManager.instance.currentMoney)
+        if (tileThreeCost <= IncomeManager.instance.currentMoney)
         {
             tileButtonThree.interactable = true;
 
@@ -100,9 +100,9 @@ public class ChooseTilePanel : MonoBehaviour
 
     public void SelectTileSO(int index)
     {
-        HexTileMapManager.instance.selectedTileSO = choosedTilesSO[index];
+        Board.instance.selectedTileSO = choosedTilesSO[index];
 
-        HexTileMapManager.instance.ShowActiveHexes();
+        Board.instance.ShowActiveHexes();
 
         UIManager.instance.EnableTilePlacementUIElements(choosedTilesSO[index].name);
 

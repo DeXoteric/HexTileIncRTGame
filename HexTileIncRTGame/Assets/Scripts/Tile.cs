@@ -31,7 +31,7 @@ public class Tile : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = tileSprite;
 
-        InputOutputManager.instance.currentMoney -= MathFunctions.CalculateTileCost(tileBaseCost);
+        IncomeManager.instance.currentMoney -= MathFunctions.CalculateTileCost(tileBaseCost);
 
         GameManager.instance.placedTiles += 1;
 
@@ -71,7 +71,7 @@ public class Tile : MonoBehaviour
 
     protected void RefreshDataDisplay()
     {
-        InputOutputManager.instance.UpdateTotalOutputs();
+        IncomeManager.instance.UpdateTotalOutputs();
         UIManager.instance.UpdateOutputDataDisplay();
     }
 }

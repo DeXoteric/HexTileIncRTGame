@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HexTileMapGenerator : MonoBehaviour
+public class BoardGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject hexTilePrefab;
 

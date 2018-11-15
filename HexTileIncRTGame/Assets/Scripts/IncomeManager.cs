@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class InputOutputManager : MonoBehaviour
+public class IncomeManager : MonoBehaviour
 {
-    public static InputOutputManager instance;
+    public static IncomeManager instance;
 
     public float currentMoney;
 
@@ -27,7 +27,7 @@ public class InputOutputManager : MonoBehaviour
     {
         totalIncome = 0;
 
-        foreach (var tile in HexTileMapManager.instance.placedTiles)
+        foreach (var tile in Board.instance.placedTiles)
         {
             totalIncome += tile.GetComponent<Tile>().GetTileIncome();
         }

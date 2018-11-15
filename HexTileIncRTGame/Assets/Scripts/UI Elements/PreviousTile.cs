@@ -10,15 +10,15 @@ public class PreviousTile : MonoBehaviour
 
         if (currentSelectedTileIndex < 0)
         {
-            currentSelectedTileIndex = HexTileMapManager.instance.placedTiles.Count - 1;
+            currentSelectedTileIndex = Board.instance.placedTiles.Count - 1;
         }
 
-        GetComponentInParent<TileInfoPanel>().ShowSelectedTile(HexTileMapManager.instance.placedTiles[currentSelectedTileIndex]);
-        HexTileMapManager.instance.selectedTile = HexTileMapManager.instance.placedTiles[currentSelectedTileIndex];
+        GetComponentInParent<TileInfoPanel>().ShowSelectedTile(Board.instance.placedTiles[currentSelectedTileIndex]);
+        Board.instance.selectedTile = Board.instance.placedTiles[currentSelectedTileIndex];
     }
 
     private void Update()
     {
-        currentSelectedTileIndex = HexTileMapManager.instance.GetSelectedTileIndex();
+        currentSelectedTileIndex = Board.instance.GetSelectedTileIndex();
     }
 }

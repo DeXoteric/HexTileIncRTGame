@@ -19,7 +19,7 @@ public class TileInfoPanel : MonoBehaviour
         }
         this.selectedTile = selectedTile;
 
-        Debug.Log(HexTileMapManager.instance.placedTiles.IndexOf(selectedTile));
+        Debug.Log(Board.instance.placedTiles.IndexOf(selectedTile));
 
         selectedTile.tileHighlight.enabled = true;
 

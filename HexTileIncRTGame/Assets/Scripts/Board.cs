@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HexTileMapManager : MonoBehaviour
+public class Board : MonoBehaviour
 {
-    public static HexTileMapManager instance;
+    public static Board instance;
 
     [SerializeField] private GameObject hqTile;
 

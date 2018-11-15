@@ -4,8 +4,8 @@ public class CancelTilePlacement : MonoBehaviour
 {
     public void Cancel()
     {
-        HexTileMapManager.instance.ResetSelectedTile();
-        HexTileMapManager.instance.HideActiveHexes();
+        Board.instance.ResetSelectedTile();
+        Board.instance.HideActiveHexes();
         UIManager.instance.DisableTilePlacementUIElements();
     }
 }

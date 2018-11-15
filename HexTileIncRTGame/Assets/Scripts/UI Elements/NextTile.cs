@@ -8,17 +8,17 @@ public class NextTile : MonoBehaviour
     {
         currentSelectedTileIndex += 1;
 
-        if (currentSelectedTileIndex > HexTileMapManager.instance.placedTiles.Count - 1)
+        if (currentSelectedTileIndex > Board.instance.placedTiles.Count - 1)
         {
             currentSelectedTileIndex = 0;
         }
 
-        GetComponentInParent<TileInfoPanel>().ShowSelectedTile(HexTileMapManager.instance.placedTiles[currentSelectedTileIndex]);
-        HexTileMapManager.instance.selectedTile = HexTileMapManager.instance.placedTiles[currentSelectedTileIndex];
+        GetComponentInParent<TileInfoPanel>().ShowSelectedTile(Board.instance.placedTiles[currentSelectedTileIndex]);
+        Board.instance.selectedTile = Board.instance.placedTiles[currentSelectedTileIndex];
     }
 
     private void Update()
     {
-        currentSelectedTileIndex = HexTileMapManager.instance.GetSelectedTileIndex();
+        currentSelectedTileIndex = Board.instance.GetSelectedTileIndex();
     }
 }
