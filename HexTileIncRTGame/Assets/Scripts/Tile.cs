@@ -2,6 +2,8 @@
 
 public class Tile : MonoBehaviour
 {
+    public NewTileSO selectedTileSO;
+
     public string tileName;
     public Sprite tileSprite;
     public float tileBaseIncome;
@@ -9,36 +11,64 @@ public class Tile : MonoBehaviour
 
     public int tileTier = 1;
     public float tileIncome;
-    public float adjacencyMultiplier;
-    
+
+    public float tileAdjacencyBonus;
+
+    private float adjacencyMultiplier;
+    private float globalMultiplier;
+    private float totalMultiplier;
 
     private void Start()
     {
+        gameObject.name = selectedTileSO.name;
+        tileName = selectedTileSO.tileName;
+        tileSprite = selectedTileSO.tileSprite;
+        tileBaseIncome = selectedTileSO.tileBaseIncome;
+        tileBaseCost = selectedTileSO.tileBaseCost;
+        GetComponentInChildren<TileTypeCollider>().tag = selectedTileSO.tileType.ToString();
+        tileAdjacencyBonus = selectedTileSO.tileAdjacencyBonus;
+
+        GetComponent<SpriteRenderer>().sprite = tileSprite;
+
+        InputOutputManager.instance.currentMoney -= MathFunctions.CalculateTileCost(tileBaseCost);
+
         GameManager.instance.placedTiles += 1;
 
-        gameObject.name = tileName;
-
-        tileIncome = GetTileIncome();
-
         RefreshData();
+        RefreshDataDisplay();
     }
 
     public float GetTileIncome()
     {
-        var output = tileBaseIncome + (tileTier - 1) + (tileBaseIncome * adjacencyMultiplier / 100);
+        var output = tileBaseIncome + (tileTier - 1) + (tileBaseIncome * totalMultiplier / 100);
 
         return output;
     }
 
-    public void AddBonusMultiplier()
+    public void AddAdjacencyMultiplier()
     {
-        adjacencyMultiplier += 10;
-        tileIncome = GetTileIncome();
+        adjacencyMultiplier += tileAdjacencyBonus;
 
         RefreshData();
+        RefreshDataDisplay();
     }
 
-    private void RefreshData()
+    public void AddGlobalMultiplier(float multiplier)
+    {
+        globalMultiplier += multiplier;
+
+        RefreshData();
+        RefreshDataDisplay();
+    }
+
+    protected void RefreshData()
+    {
+        totalMultiplier = adjacencyMultiplier + globalMultiplier;
+
+        tileIncome = GetTileIncome();
+    }
+
+    protected void RefreshDataDisplay()
     {
         InputOutputManager.instance.UpdateTotalOutputs();
         UIManager.instance.UpdateOutputDataDisplay();

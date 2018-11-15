@@ -84,17 +84,11 @@ public class HexTileMapManager : MonoBehaviour
                     var tilePosition = hit.rigidbody.transform.position;
                     GameObject tile = Instantiate(tileTemplatePrefab, tilePosition, Quaternion.identity);
 
-                    tile.name = selectedTileSO.name;
-                    tile.GetComponent<Tile>().tileName = selectedTileSO.tileName;
-                    tile.GetComponent<Tile>().tileBaseIncome = selectedTileSO.tileBaseIncome;
-                    tile.GetComponent<Tile>().tileBaseCost = selectedTileSO.tileBaseCost;
-                    tile.GetComponent<Tile>().GetComponentInChildren<TileTypeCollider>().tag = selectedTileSO.tileType.ToString();
+                    tile.GetComponent<Tile>().selectedTileSO = selectedTileSO;
                     tile.transform.parent = transform;
                     tile.tag = "Placed Tile";
 
                     placedTiles.Add(tile);
-
-                    InputOutputManager.instance.currentMoney -= MathFunctions.CalculateTileCost(tile.GetComponent<Tile>().tileBaseCost);
 
                     UIManager.instance.DisableTilePlacementUIElements();
                     ResetSelectedTile();

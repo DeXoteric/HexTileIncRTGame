@@ -14,4 +14,5 @@ public class NewTileSO : ScriptableObject
     public float tileBaseIncome;
     public float tileBaseCost;
     public TileType tileType;
+    public float tileAdjacencyBonus;
 }

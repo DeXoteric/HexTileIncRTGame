@@ -8,7 +8,7 @@ public class TileTypeCollider : MonoBehaviour
     {
         if (gameObject.tag == collision.tag)
         {
-            collision.GetComponentInParent<Tile>().AddBonusMultiplier();
+            collision.GetComponentInParent<Tile>().AddAdjacencyMultiplier();
         }
     }
 }

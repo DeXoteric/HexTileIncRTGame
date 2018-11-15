@@ -15,7 +15,7 @@ public class InputOutputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //TODO remove for final build
         {
             UpdateTotalOutputs();
             UpdateCurrentResources();

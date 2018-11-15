@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Mine
   m_EditorClassIdentifier: 
   tileName: Mine
-  tileSprite: {fileID: 21300000, guid: 410c29f037392584998434af0d66ee63, type: 3}
-  tileBaseIncome: 3
-  tileBaseCost: 10
+  tileSprite: {fileID: 21300000, guid: 0f8a75fe940fae94384e6e4b2946e64d, type: 3}
+  tileBaseIncome: 1
+  tileBaseCost: 50
   tileType: 1
+  tileAdjacencyBonus: 10

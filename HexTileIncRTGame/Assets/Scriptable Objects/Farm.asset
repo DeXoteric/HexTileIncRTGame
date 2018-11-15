@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: Farm
   tileSprite: {fileID: 21300000, guid: 410c29f037392584998434af0d66ee63, type: 3}
-  tileBaseIncome: 3
-  tileBaseCost: 10
+  tileBaseIncome: 1
+  tileBaseCost: 50
   tileType: 0
+  tileAdjacencyBonus: 10

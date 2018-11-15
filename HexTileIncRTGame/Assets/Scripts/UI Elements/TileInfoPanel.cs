@@ -18,7 +18,7 @@ public class TileInfoPanel : MonoBehaviour
 
     private void UpdateTileInfo()
     {
-        tileNameText.text = selectedTile.name;
+        tileNameText.text = selectedTile.tileName;
         tileTierText.text = selectedTile.tileTier.ToString();
         tileIncomeText.text = selectedTile.GetTileIncome().ToString();
     }
