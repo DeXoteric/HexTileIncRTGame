@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text placeTileText;
     [SerializeField] private GameObject cancelPlacementButton;
 
+    [SerializeField] private TextMeshProUGUI currentMoneyText;
     [SerializeField] private TextMeshProUGUI incomeText;
 
     [SerializeField] private TileInfoPanel tileInfoPanel;
@@ -34,7 +35,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateOutputDataDisplay()
     {
-        incomeText.text = "Income: " + IncomeManager.instance.currentMoney.ToString("F2") + " +" + IncomeManager.instance.totalIncome.ToString("F2") + " per tick";
+        currentMoneyText.text = "Coins: " + IncomeManager.instance.currentMoney.ToString("F2");
+        incomeText.text = "Income: " + IncomeManager.instance.totalIncome.ToString("F2") + " Coins per Tick";
     }
 
     public void EnableTileInfoPanel()
