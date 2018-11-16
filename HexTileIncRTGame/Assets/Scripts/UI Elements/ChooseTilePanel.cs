@@ -21,7 +21,7 @@ public class ChooseTilePanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tileThreeIncomeText;
     [SerializeField] private TextMeshProUGUI tileThreeCostText;
 
-    [SerializeField] private List<NewTileSO> tilesSO;
+   
     private List<NewTileSO> choosedTilesSO;
 
     float tileOneCost, tileTwoCost, tileThreeCost;
@@ -64,6 +64,8 @@ public class ChooseTilePanel : MonoBehaviour
         if (GameManager.instance.rerollTiles)
         {
             choosedTilesSO = new List<NewTileSO>();
+
+            var tilesSO = Board.instance.tilesSO;
 
             for (int i = 0; i < 3; i++)
             {

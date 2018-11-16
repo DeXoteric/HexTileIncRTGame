@@ -4,6 +4,7 @@ public class Tile : MonoBehaviour
 {
     public NewTileSO selectedTileSO;
 
+    public TileType[] tileType;
     public string tileName;
     public Sprite tileSprite;
     public SpriteRenderer tileHighlight;
@@ -21,12 +22,12 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
+        tileType = selectedTileSO.tileType;
         gameObject.name = selectedTileSO.name;
         tileName = selectedTileSO.tileName;
         tileSprite = selectedTileSO.tileSprite;
         tileBaseIncome = selectedTileSO.tileBaseIncome;
         tileBaseCost = selectedTileSO.tileBaseCost;
-        GetComponentInChildren<TileTypeCollider>().tag = selectedTileSO.tileType.ToString();
         tileAdjacencyBonus = selectedTileSO.tileAdjacencyBonus;
 
         GetComponent<SpriteRenderer>().sprite = tileSprite;
@@ -39,7 +40,6 @@ public class Tile : MonoBehaviour
         RefreshDataDisplay();
     }
 
-   
     public float GetTileIncome()
     {
         var output = tileBaseIncome + (tileTier - 1) + (tileBaseIncome * totalMultiplier / 100);
@@ -47,9 +47,9 @@ public class Tile : MonoBehaviour
         return output;
     }
 
-    public void AddAdjacencyMultiplier()
+    public void AddAdjacencyMultiplier(float multiplier)
     {
-        adjacencyMultiplier += tileAdjacencyBonus;
+        adjacencyMultiplier += multiplier;
 
         RefreshData();
         RefreshDataDisplay();

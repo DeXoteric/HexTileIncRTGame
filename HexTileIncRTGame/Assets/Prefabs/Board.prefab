@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c254c3222b073c49bcda0e8490df68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilesSO:
+  - {fileID: 11400000, guid: e73c9e8dc4eb3f84cab21da7715eec25, type: 2}
+  - {fileID: 11400000, guid: 3a0695d296f49e044b8e62fe608fe20c, type: 2}
   hqTile: {fileID: 1891224679863772, guid: 81c8114aa80d50b4ea0723e48896eb37, type: 2}
   tileInfoPanel: {fileID: 0}
   tilePlacementMask:

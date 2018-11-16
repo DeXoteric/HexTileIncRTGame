@@ -6,6 +6,7 @@ public class Board : MonoBehaviour
 {
     public static Board instance;
 
+    public List<NewTileSO> tilesSO;
     [SerializeField] private GameObject hqTile;
     [SerializeField] private TileInfoPanel tileInfoPanel;
     [SerializeField] private LayerMask tilePlacementMask;
@@ -117,20 +118,30 @@ public class Board : MonoBehaviour
             if (hit.collider != null)
             {
                 selectedTile = hit.collider.GetComponentInParent<Tile>();
-                ShowSelectedTileInfo();
+                if (selectedTile.tileType[0] == TileType.Headquarter)
+                {
+                    ShowHQInfo();
+                }
+                else
+                {
+                    ShowSelectedTileInfo();
+                }
             }
         }
     }
 
     private void ShowSelectedTileInfo()
     {
-        
-
         if (!tileInfoPanel.gameObject.activeInHierarchy)
         {
             tileInfoPanel.gameObject.SetActive(true);
         }
 
         tileInfoPanel.ShowSelectedTile(selectedTile);
+    }
+
+    private void ShowHQInfo()
+    {
+        FindObjectOfType<ToggleHQPanel>().TogglePanel();
     }
 }

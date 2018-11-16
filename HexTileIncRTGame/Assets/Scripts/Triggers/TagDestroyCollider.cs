@@ -2,18 +2,18 @@
 
 public class TagDestroyCollider : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Empty Hex")
+        if (other.gameObject.tag == "Empty Hex")
         {
-            Board.instance.activeHexes.Add(collision.gameObject);
-            collision.gameObject.tag = "Active Hex";
+            Board.instance.activeHexes.Add(other.gameObject);
+            other.gameObject.tag = "Active Hex";
         }
-        else if (collision.gameObject.transform.position  == gameObject.transform.position)
+        else if (other.gameObject.transform.position  == gameObject.transform.position)
         {
-            Board.instance.unusedHexes.Remove(collision.gameObject);
-            Board.instance.activeHexes.Remove(collision.gameObject);
-            Destroy(collision.gameObject);
+            Board.instance.unusedHexes.Remove(other.gameObject);
+            Board.instance.activeHexes.Remove(other.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

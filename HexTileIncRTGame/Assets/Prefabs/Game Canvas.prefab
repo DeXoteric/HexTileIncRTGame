@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1156624290757936
 GameObject:
   m_ObjectHideFlags: 1
@@ -904,11 +904,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -972,9 +972,6 @@ MonoBehaviour:
   tileThreeNameText: {fileID: 114901187976348382}
   tileThreeIncomeText: {fileID: 114097594204816614}
   tileThreeCostText: {fileID: 114864096528371746}
-  tilesSO:
-  - {fileID: 11400000, guid: e73c9e8dc4eb3f84cab21da7715eec25, type: 2}
-  - {fileID: 11400000, guid: 3a0695d296f49e044b8e62fe608fe20c, type: 2}
 --- !u!114 &114266654016059736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3100,11 +3097,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3418,11 +3415,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3716,6 +3713,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31368b6fe915794192f41946c1558ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileNameText: {fileID: 114834849905100934}
+  tileTierText: {fileID: 114140378697476786}
+  tileIncomeText: {fileID: 114768573570847352}
 --- !u!114 &114901187976348382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4443,8 +4443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100, y: 25}
-  m_SizeDelta: {x: 44, y: 42}
+  m_AnchoredPosition: {x: -120, y: 25}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224225504746714426
 RectTransform:
@@ -4615,7 +4615,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -25, y: 25}
-  m_SizeDelta: {x: 44, y: 42}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224684615596558132
 RectTransform:

@@ -8,7 +8,7 @@ public class PreviousTile : MonoBehaviour
     {
         currentSelectedTileIndex -= 1;
 
-        if (currentSelectedTileIndex < 0)
+        if (currentSelectedTileIndex < 1)
         {
             currentSelectedTileIndex = Board.instance.placedTiles.Count - 1;
         }

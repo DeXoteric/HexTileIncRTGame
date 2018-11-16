@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4559096759949978}
   - component: {fileID: 58992529518004894}
   - component: {fileID: 114047051390855686}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tile Type Collider
   m_TagString: Farm
   m_Icon: {fileID: 0}
@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedTileSO: {fileID: 0}
+  tileType: 
   tileName: Name
   tileSprite: {fileID: 0}
   tileHighlight: {fileID: 212103958754054964}

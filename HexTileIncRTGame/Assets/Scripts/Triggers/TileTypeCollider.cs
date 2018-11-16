@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class TileTypeCollider : MonoBehaviour
 {
-    
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (gameObject.tag == collision.tag)
+        var gameObjectArray = gameObject.GetComponentInParent<Tile>().tileType;
+        var collisionArray = other.GetComponentInParent<Tile>().tileType;
+        var bonus = other.GetComponentInParent<Tile>().tileAdjacencyBonus;
+
+        if (gameObjectArray.Intersect(collisionArray).Any())
         {
-            collision.GetComponentInParent<Tile>().AddAdjacencyMultiplier();
+            gameObject.GetComponentInParent<Tile>().AddAdjacencyMultiplier(bonus);
         }
     }
 }

@@ -10,7 +10,12 @@ public class NextTile : MonoBehaviour
 
         if (currentSelectedTileIndex > Board.instance.placedTiles.Count - 1)
         {
-            currentSelectedTileIndex = 0;
+            currentSelectedTileIndex = 1;
+        }
+
+        if (currentSelectedTileIndex == 0)
+        {
+            currentSelectedTileIndex = 1;
         }
 
         GetComponentInParent<TileInfoPanel>().ShowSelectedTile(Board.instance.placedTiles[currentSelectedTileIndex]);
