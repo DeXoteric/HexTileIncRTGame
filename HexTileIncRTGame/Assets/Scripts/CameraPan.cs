@@ -30,7 +30,7 @@ public class CameraPan : MonoBehaviour
         }
         if (Input.GetMouseButton(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject()) return; //TODO doesn't work for mobile
 
             Vector3 direction = new Vector2(Input.mousePosition.x - touchStart.x, Input.mousePosition.y - touchStart.y);
             touchStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y);

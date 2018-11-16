@@ -39,6 +39,7 @@ public class Tile : MonoBehaviour
         RefreshDataDisplay();
     }
 
+   
     public float GetTileIncome()
     {
         var output = tileBaseIncome + (tileTier - 1) + (tileBaseIncome * totalMultiplier / 100);

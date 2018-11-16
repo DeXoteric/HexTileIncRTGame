@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hqTile: {fileID: 1891224679863772, guid: 81c8114aa80d50b4ea0723e48896eb37, type: 2}
+  tileInfoPanel: {fileID: 0}
   tilePlacementMask:
     serializedVersion: 2
     m_Bits: 512

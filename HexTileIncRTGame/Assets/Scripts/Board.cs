@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
     public static Board instance;
 
     [SerializeField] private GameObject hqTile;
-
+    [SerializeField] private TileInfoPanel tileInfoPanel;
     [SerializeField] private LayerMask tilePlacementMask;
     [SerializeField] private LayerMask tileInfoMask;
 
@@ -109,7 +109,7 @@ public class Board : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject()) return; //TODO doesn't work for mobile
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tileInfoMask);
@@ -117,10 +117,20 @@ public class Board : MonoBehaviour
             if (hit.collider != null)
             {
                 selectedTile = hit.collider.GetComponentInParent<Tile>();
-
-                UIManager.instance.EnableTileInfoPanel();
-                FindObjectOfType<TileInfoPanel>().ShowSelectedTile(selectedTile);
+                ShowSelectedTileInfo();
             }
         }
+    }
+
+    private void ShowSelectedTileInfo()
+    {
+        
+
+        if (!tileInfoPanel.gameObject.activeInHierarchy)
+        {
+            tileInfoPanel.gameObject.SetActive(true);
+        }
+
+        tileInfoPanel.ShowSelectedTile(selectedTile);
     }
 }

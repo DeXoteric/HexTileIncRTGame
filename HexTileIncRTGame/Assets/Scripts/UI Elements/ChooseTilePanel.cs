@@ -106,6 +106,6 @@ public class ChooseTilePanel : MonoBehaviour
 
         UIManager.instance.EnableTilePlacementUIElements(choosedTilesSO[index].name);
 
-        UIManager.instance.ToggleChooseTilePanel();
+        //UIManager.instance.ToggleChooseTilePanel();
     }
 }
