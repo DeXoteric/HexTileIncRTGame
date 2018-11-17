@@ -137,6 +137,7 @@ public class Board : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current.IsPointerOverGameObject()) return; //TODO doesn't work for mobile
+            if (chooseTilePanel.gameObject.activeInHierarchy) return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tileInfoMask);
