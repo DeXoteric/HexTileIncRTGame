@@ -55,3 +55,4 @@ MonoBehaviour:
   cancelPlacementButton: {fileID: 0}
   currentMoneyText: {fileID: 0}
   incomeText: {fileID: 0}
+  tileTypeIcons: []

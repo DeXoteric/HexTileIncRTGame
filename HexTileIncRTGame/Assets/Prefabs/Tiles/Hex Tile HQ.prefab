@@ -312,7 +312,7 @@ MonoBehaviour:
   tileBaseCost: 0
   tileTier: 1
   tileIncome: 0
-  tileAdjacencyBonus: 0
+  tileAdjacencyBonus: 50
 --- !u!212 &212454418762313402
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -10,8 +10,8 @@ public class ToggleChooseTilePanel : MonoBehaviour {
     public void ToggleTilePanel()
     {
         chooseTilePanel.gameObject.SetActive(!chooseTilePanel.gameObject.activeInHierarchy);
+        Board.instance.ShowActiveHexes();
 
-       
 
         if (chooseTilePanel.gameObject.activeInHierarchy)
         {

@@ -4,10 +4,11 @@ public class HexTile : MonoBehaviour
 {
     public int tileIndex;
 
-    private void Start()
+    private void OnEnable()
     {
         Board.instance.unusedHexes.Add(gameObject);
-        tileIndex = Board.instance.unusedHexes.Count - 1;
+        //tileIndex = Board.instance.unusedHexes.Count - 1;
+        
     }
 
     

@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ToggleHQPanel : MonoBehaviour {
-
+public class ToggleHQPanel : MonoBehaviour
+{
     [SerializeField] private HQPanel hqPanel;
     [SerializeField] private TileInfoPanel tileInfoPanel;
+    [SerializeField] private ChooseTilePanel chooseTilePanel;
 
     public void TogglePanel()
     {
@@ -18,8 +17,12 @@ public class ToggleHQPanel : MonoBehaviour {
 
         if (tileInfoPanel.gameObject.activeInHierarchy)
         {
-           
             CloseTileInfoPanel();
+        }
+
+        if (chooseTilePanel.gameObject.activeInHierarchy)
+        {
+            CloseChooseTileInfoPanel();
         }
     }
 
@@ -34,5 +37,12 @@ public class ToggleHQPanel : MonoBehaviour {
     private void CloseTileInfoPanel()
     {
         tileInfoPanel.gameObject.SetActive(false);
+    }
+
+    private void CloseChooseTileInfoPanel()
+    {
+        chooseTilePanel.gameObject.SetActive(false);
+        Board.instance.ResetSelectedTile();
+        Board.instance.HideActiveHexes();
     }
 }

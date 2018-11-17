@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a0695d296f49e044b8e62fe608fe20c, type: 2}
   hqTile: {fileID: 1891224679863772, guid: 81c8114aa80d50b4ea0723e48896eb37, type: 2}
   tileInfoPanel: {fileID: 0}
+  chooseTilePanel: {fileID: 0}
   tilePlacementMask:
     serializedVersion: 2
     m_Bits: 512

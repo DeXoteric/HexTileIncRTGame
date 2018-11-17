@@ -15,7 +15,7 @@ public class IncomeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //TODO remove for final build
+        if (Input.GetKey(KeyCode.Space)) //TODO remove for final build
         {
             UpdateTotalOutputs();
             UpdateCurrentResources();

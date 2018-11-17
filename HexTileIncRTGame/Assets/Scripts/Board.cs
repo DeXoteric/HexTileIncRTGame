@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     public List<NewTileSO> tilesSO;
     [SerializeField] private GameObject hqTile;
     [SerializeField] private TileInfoPanel tileInfoPanel;
+    [SerializeField] private ChooseTilePanel chooseTilePanel;
     [SerializeField] private LayerMask tilePlacementMask;
     [SerializeField] private LayerMask tileInfoMask;
 
@@ -20,6 +21,9 @@ public class Board : MonoBehaviour
     public List<GameObject> unusedHexes = new List<GameObject>();
     public List<GameObject> activeHexes = new List<GameObject>();
     public List<Tile> placedTiles = new List<Tile>();
+
+    private GameObject[] hexes;
+    private bool rerollHexes = true;
 
     private void Awake()
     {
@@ -53,10 +57,30 @@ public class Board : MonoBehaviour
 
     public void ShowActiveHexes()
     {
-        foreach (var hex in activeHexes)
+        int hexesToShow = (int)activeHexes.Count / 2;
+
+        if (rerollHexes)
+        {
+            hexes = new GameObject[hexesToShow];
+
+            for (int i = 0; i < hexesToShow; i++)
+            {
+                
+                hexes[i] = activeHexes[Random.Range(0, activeHexes.Count)];
+            }
+        }
+
+        foreach (var hex in hexes)
         {
             hex.GetComponent<SpriteRenderer>().enabled = true;
         }
+
+        rerollHexes = false;
+
+        //foreach (var hex in activeHexes)
+        //{
+        //    hex.GetComponent<SpriteRenderer>().enabled = true;
+        //}
     }
 
     public void HideActiveHexes()
@@ -86,7 +110,7 @@ public class Board : MonoBehaviour
 
             if (hit.collider != null)
             {
-                if (hit.rigidbody.tag == "Active Hex")
+                if (hit.rigidbody.tag == "Active Hex" && hit.collider.GetComponent<SpriteRenderer>().isVisible)
                 {
                     var tilePosition = hit.rigidbody.transform.position;
                     GameObject tile = Instantiate(tileTemplatePrefab, tilePosition, Quaternion.identity);
@@ -97,10 +121,12 @@ public class Board : MonoBehaviour
 
                     placedTiles.Add(tile.GetComponent<Tile>());
 
-                    UIManager.instance.DisableTilePlacementUIElements();
+                    
                     ResetSelectedTile();
                     HideActiveHexes();
                     GameManager.instance.rerollTiles = true;
+                    rerollHexes = true;
+                    chooseTilePanel.gameObject.SetActive(false);
                 }
             }
         }

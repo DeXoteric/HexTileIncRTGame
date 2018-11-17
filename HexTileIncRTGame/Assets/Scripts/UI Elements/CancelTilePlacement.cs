@@ -6,6 +6,6 @@ public class CancelTilePlacement : MonoBehaviour
     {
         Board.instance.ResetSelectedTile();
         Board.instance.HideActiveHexes();
-        UIManager.instance.DisableTilePlacementUIElements();
+        
     }
 }
