@@ -11,6 +11,7 @@ public class IncomeManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        currentMoney = GameDataManager.GetCurrentMoney();
     }
 
     private void Update()
@@ -20,6 +21,11 @@ public class IncomeManager : MonoBehaviour
             UpdateTotalOutputs();
             UpdateCurrentResources();
             UIManager.instance.UpdateOutputDataDisplay();
+        }
+
+        if (currentMoney != GameDataManager.GetCurrentMoney())
+        {
+            GameDataManager.SetCurrentMoney(currentMoney);
         }
     }
 
