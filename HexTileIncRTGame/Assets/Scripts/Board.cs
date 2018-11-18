@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DeXoteric;
 
 public class Board : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class Board : MonoBehaviour
     private GameObject[] hexes;
     private bool rerollHexes = true;
 
+    private Vector3 mouseStart;
+    private Vector2 touchStart;
+
     private void Awake()
     {
         instance = this;
@@ -47,11 +51,25 @@ public class Board : MonoBehaviour
     {
         if (selectedTileSO != null)
         {
-            PlaceTile();
+            if (!GameManager.instance.IsOnMobile)
+            {
+                PlaceTileMouse();
+            }
+            else
+            {
+                PlaceTileTouch();
+            }
         }
         else
         {
-            GetTileInfo();
+            if (!GameManager.instance.IsOnMobile)
+            {
+                GetTileInfoMouse();
+            }
+            else
+            {
+                GetTileInfoTouch();
+            }
         }
     }
 
@@ -65,7 +83,6 @@ public class Board : MonoBehaviour
 
             for (int i = 0; i < hexesToShow; i++)
             {
-                
                 hexes[i] = activeHexes[Random.Range(0, activeHexes.Count)];
             }
         }
@@ -101,58 +118,118 @@ public class Board : MonoBehaviour
         return placedTiles.IndexOf(selectedTile);
     }
 
-    private void PlaceTile()
+    private void PlaceTileMouse()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            mouseStart = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (Input.mousePosition != mouseStart) return;
+            if (Utils.IsPointerOverUIObject()) return;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tilePlacementMask);
+            PlaceTileOnSelectedHex(ray);
+        }
+    }
 
-            if (hit.collider != null)
+    private void PlaceTileTouch()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            touchStart = Input.GetTouch(0).position;
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            if (Input.GetTouch(0).position != touchStart) return;
+            if (Utils.IsPointerOverUIObject()) return;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            PlaceTileOnSelectedHex(ray);
+        }
+    }
+
+    private void PlaceTileOnSelectedHex(Ray ray)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tilePlacementMask);
+
+        if (hit.collider != null)
+        {
+            if (hit.rigidbody.tag == "Active Hex" && hit.collider.GetComponent<SpriteRenderer>().isVisible)
             {
-                if (hit.rigidbody.tag == "Active Hex" && hit.collider.GetComponent<SpriteRenderer>().isVisible)
-                {
-                    var tilePosition = hit.rigidbody.transform.position;
-                    GameObject tile = Instantiate(tileTemplatePrefab, tilePosition, Quaternion.identity);
+                var tilePosition = hit.rigidbody.transform.position;
+                GameObject tile = Instantiate(tileTemplatePrefab, tilePosition, Quaternion.identity);
 
-                    tile.GetComponent<Tile>().selectedTileSO = selectedTileSO;
-                    tile.transform.parent = transform;
-                    tile.tag = "Placed Tile";
+                tile.GetComponent<Tile>().selectedTileSO = selectedTileSO;
+                tile.transform.parent = transform;
+                tile.tag = "Placed Tile";
 
-                    placedTiles.Add(tile.GetComponent<Tile>());
+                placedTiles.Add(tile.GetComponent<Tile>());
 
-                    
-                    ResetSelectedTile();
-                    HideActiveHexes();
-                    GameManager.instance.rerollTiles = true;
-                    rerollHexes = true;
-                    chooseTilePanel.gameObject.SetActive(false);
-                }
+                ResetSelectedTile();
+                HideActiveHexes();
+                GameManager.instance.rerollTiles = true;
+                rerollHexes = true;
+                chooseTilePanel.gameObject.SetActive(false);
             }
         }
     }
 
-    private void GetTileInfo()
+    private void GetTileInfoMouse()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return; //TODO doesn't work for mobile
+            mouseStart = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            
             if (chooseTilePanel.gameObject.activeInHierarchy) return;
+            if (Input.mousePosition != mouseStart) return;
+            if (Utils.IsPointerOverUIObject()) return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tileInfoMask);
+            CheckHit(ray);
+        }
+    }
 
-            if (hit.collider != null)
+    private void GetTileInfoTouch()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            touchStart = Input.GetTouch(0).position;
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            if (chooseTilePanel.gameObject.activeInHierarchy) return;
+            if (Input.GetTouch(0).position != touchStart) return;
+            if (Utils.IsPointerOverUIObject()) return;
+            
+
+          Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            CheckHit(ray);
+        }
+    }
+
+    private void CheckHit(Ray ray)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, tileInfoMask);
+
+        if (hit.collider != null)
+        {
+            selectedTile = hit.collider.GetComponentInParent<Tile>();
+            if (selectedTile.tileType[0] == TileType.Headquarter)
             {
-                selectedTile = hit.collider.GetComponentInParent<Tile>();
-                if (selectedTile.tileType[0] == TileType.Headquarter)
-                {
-                    ShowHQInfo();
-                }
-                else
-                {
-                    ShowSelectedTileInfo();
-                }
+                ShowHQInfo();
+            }
+            else
+            {
+                ShowSelectedTileInfo();
             }
         }
     }

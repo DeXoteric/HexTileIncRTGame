@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DeXoteric;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CameraPan : MonoBehaviour
@@ -30,11 +31,11 @@ public class CameraPan : MonoBehaviour
         }
         if (Input.GetMouseButton(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return; //TODO doesn't work for mobile
+            if (Utils.IsPointerOverUIObject()) return;
 
             Vector3 direction = new Vector2(Input.mousePosition.x - touchStart.x, Input.mousePosition.y - touchStart.y);
             touchStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            transform.position = new Vector2(transform.position.x - direction.x * cameraPanSpeed * Time.deltaTime, transform.position.y- direction.y * cameraPanSpeed * Time.deltaTime);
+            transform.position = new Vector2(transform.position.x - direction.x * cameraPanSpeed * Time.deltaTime, transform.position.y - direction.y * cameraPanSpeed * Time.deltaTime);
         }
     }
 }
