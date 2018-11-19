@@ -2,19 +2,20 @@
 
 public class Tile : MonoBehaviour
 {
-    public NewTileSO selectedTileSO;
+    [HideInInspector] public NewTileSO selectedTileSO;
 
+    public TileID tileID;
     public TileType[] tileType;
     public string tileName;
-    public Sprite tileSprite;
+    public Sprite tileSprite { get; private set; }
     public SpriteRenderer tileHighlight;
     public float tileBaseIncome;
-    public float tileBaseCost;
+    public float tileBaseCost { get; private set; }
 
-    public int tileTier = 1;
-    public float tileIncome;
+    public int tileLevel { get; protected set; }
+    public float tileIncome { get; private set; }
 
-    public float tileAdjacencyBonus;
+    public float TileAdjacencyBonus { get; private set; }
 
     private float adjacencyMultiplier;
     private float globalMultiplier;
@@ -22,17 +23,19 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
+        tileID = selectedTileSO.tileID;
         tileType = selectedTileSO.tileType;
         gameObject.name = selectedTileSO.name;
         tileName = selectedTileSO.tileName;
         tileSprite = selectedTileSO.tileSprite;
         tileBaseIncome = selectedTileSO.tileBaseIncome;
         tileBaseCost = selectedTileSO.tileBaseCost;
-        tileAdjacencyBonus = selectedTileSO.tileAdjacencyBonus;
-
+        TileAdjacencyBonus = selectedTileSO.tileAdjacencyBonus;
+        tileLevel = UpgradeLevelDictionary.GetUpgradeLevel(tileID.ToString());
         GetComponent<SpriteRenderer>().sprite = tileSprite;
 
-        IncomeManager.instance.currentMoney -= MathFunctions.CalculateTileCost(tileBaseCost);
+        var tileCost = MathFunctions.CalculateTileCost(tileBaseCost);
+        IncomeManager.instance.RemoveFromCurrentMoney(tileCost);
 
         GameManager.instance.placedTiles += 1;
 
@@ -42,9 +45,11 @@ public class Tile : MonoBehaviour
 
     public float GetTileIncome()
     {
-        var output = tileBaseIncome + (tileTier - 1) + (tileBaseIncome * totalMultiplier / 100);
+        tileLevel = UpgradeLevelDictionary.GetUpgradeLevel(tileID.ToString());
 
-        return output;
+        var totalIncome = MathFunctions.CalculateTileIncome(tileBaseIncome, tileLevel, totalMultiplier);
+
+        return totalIncome;
     }
 
     public void AddAdjacencyMultiplier(float multiplier)
@@ -63,14 +68,14 @@ public class Tile : MonoBehaviour
         RefreshDataDisplay();
     }
 
-    protected void RefreshData()
+    public void RefreshData()
     {
         totalMultiplier = adjacencyMultiplier + globalMultiplier;
 
         tileIncome = GetTileIncome();
     }
 
-    protected void RefreshDataDisplay()
+    public void RefreshDataDisplay()
     {
         IncomeManager.instance.UpdateTotalOutputs();
         UIManager.instance.UpdateOutputDataDisplay();

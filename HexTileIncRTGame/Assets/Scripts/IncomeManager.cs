@@ -4,14 +4,17 @@ public class IncomeManager : MonoBehaviour
 {
     public static IncomeManager instance;
 
-    public float currentMoney;
-
-    public float totalIncome;
+    public float CurrentMoney { get; private set; }
+    public float TotalIncome { get; private set; }
 
     private void Awake()
     {
         instance = this;
-        currentMoney = GameDataManager.GetCurrentMoney();
+    }
+
+    private void Start()
+    {
+        CurrentMoney = GameDataManager.instance.GetCurrentMoney();
     }
 
     private void Update()
@@ -22,25 +25,25 @@ public class IncomeManager : MonoBehaviour
             UpdateCurrentResources();
             UIManager.instance.UpdateOutputDataDisplay();
         }
-
-        if (currentMoney != GameDataManager.GetCurrentMoney())
-        {
-            GameDataManager.SetCurrentMoney(currentMoney);
-        }
     }
 
     public void UpdateTotalOutputs()
     {
-        totalIncome = 0;
+        TotalIncome = 0;
 
         foreach (var tile in Board.instance.placedTiles)
         {
-            totalIncome += tile.GetComponent<Tile>().GetTileIncome();
+            TotalIncome += tile.GetComponent<Tile>().GetTileIncome();
         }
     }
 
     public void UpdateCurrentResources()
     {
-        currentMoney += totalIncome;
+        CurrentMoney += TotalIncome;
+    }
+
+    public void RemoveFromCurrentMoney(float moneyToPay)
+    {
+        CurrentMoney -= moneyToPay;
     }
 }

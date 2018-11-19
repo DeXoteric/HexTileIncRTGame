@@ -7,4 +7,5 @@ using UnityEngine;
 public struct SaveData {
 
     public float currentMoney;
+    public int prestigeLevel;
 }

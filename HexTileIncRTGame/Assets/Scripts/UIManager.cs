@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentMoneyText;
     [SerializeField] private TextMeshProUGUI incomeText;
 
-    public List<Sprite> tileTypeIcons = new List<Sprite>();
+    [HideInInspector] public List<Sprite> tileTypeIcons = new List<Sprite>();
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateOutputDataDisplay()
     {
-        currentMoneyText.text = "Coins: " + IncomeManager.instance.currentMoney.ToString("F2");
-        incomeText.text = "Income: " + IncomeManager.instance.totalIncome.ToString("F2") + " Coins per Tick";
+        currentMoneyText.text = "Coins: " + IncomeManager.instance.CurrentMoney.ToString("F2");
+        incomeText.text = "Income: " + IncomeManager.instance.TotalIncome.ToString("F2") + " Coins per Tick";
     }
 }

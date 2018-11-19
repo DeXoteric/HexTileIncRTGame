@@ -487,15 +487,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedTileSO: {fileID: 0}
+  tileID: 1
   tileType: 
-  tileName: Name
-  tileSprite: {fileID: 0}
+  tileName: 
   tileHighlight: {fileID: 212103958754054964}
   tileBaseIncome: 0
-  tileBaseCost: 0
-  tileTier: 1
-  tileIncome: 0
-  tileAdjacencyBonus: 0
 --- !u!114 &114748303381271400
 MonoBehaviour:
   m_ObjectHideFlags: 1

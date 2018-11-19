@@ -14,10 +14,10 @@ public class Board : MonoBehaviour
     [SerializeField] private LayerMask tilePlacementMask;
     [SerializeField] private LayerMask tileInfoMask;
 
-    public GameObject tileTemplatePrefab;
+    [SerializeField] private GameObject tileTemplatePrefab;
 
-    public Tile selectedTile;
-    public NewTileSO selectedTileSO;
+    [HideInInspector] public Tile selectedTile;
+    [HideInInspector] public NewTileSO selectedTileSO;
 
     public List<GameObject> unusedHexes = new List<GameObject>();
     public List<GameObject> activeHexes = new List<GameObject>();

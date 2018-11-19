@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681a79d8d97efc9468be76a8f378f51d, type: 3}
   m_Name: Farm
   m_EditorClassIdentifier: 
+  tileID: 1
   tileName: Farm
   tileSprite: {fileID: 21300000, guid: 410c29f037392584998434af0d66ee63, type: 3}
   tileBaseIncome: 1

@@ -7,7 +7,7 @@ public class TileTypeCollider : MonoBehaviour
     {
         var gameObjectArray = gameObject.GetComponentInParent<Tile>().tileType;
         var collisionArray = other.GetComponentInParent<Tile>().tileType;
-        var bonus = gameObject.GetComponentInParent<Tile>().tileAdjacencyBonus;
+        var bonus = gameObject.GetComponentInParent<Tile>().TileAdjacencyBonus;
         
 
         if (gameObjectArray.Intersect(collisionArray).Any())

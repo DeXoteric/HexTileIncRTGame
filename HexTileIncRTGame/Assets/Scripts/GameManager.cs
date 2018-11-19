@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,7 +8,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float tickTimer;
 
+    
+
+    public int prestigeLevel;
     public int placedTiles;
+
+    public int farmAmount;
+    public int farmLevel = 1;
 
     public bool isNewGame = true;
     public bool rerollTiles = true;
@@ -21,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
+        prestigeLevel = GameDataManager.instance.GetPrestigeLevel();
         StartCoroutine(Tick());
     }
 
@@ -32,6 +41,7 @@ public class GameManager : MonoBehaviour
             IncomeManager.instance.UpdateTotalOutputs();
             IncomeManager.instance.UpdateCurrentResources();
             UIManager.instance.UpdateOutputDataDisplay();
+            GameDataManager.instance.SetCurrentMoney(IncomeManager.instance.CurrentMoney);
         }
     }
 

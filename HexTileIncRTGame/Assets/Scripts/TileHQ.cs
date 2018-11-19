@@ -6,6 +6,7 @@
     {
         tileType[0] = TileType.Headquarter;
         gameObject.name = tileName;
+        tileLevel = 1;
 
         GameManager.instance.placedTiles += 1;
 

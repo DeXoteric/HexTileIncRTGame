@@ -14,8 +14,8 @@ public class TileCavasController : MonoBehaviour
     {
         tile = GetComponentInParent<Tile>();
 
-        tileIncome = tile.tileIncome;
-        incomeText.text = "+" + tileIncome.ToString("F2");
+        UpdateTileIncomeInfo();
+
         ShowIcons();
     }
 
@@ -23,9 +23,14 @@ public class TileCavasController : MonoBehaviour
     {
         if (tileIncome != tile.tileIncome)
         {
-            tileIncome = tile.tileIncome;
-            incomeText.text = "+" + tileIncome.ToString("F2");
+            UpdateTileIncomeInfo();
         }
+    }
+
+    public void UpdateTileIncomeInfo()
+    {
+        tileIncome = tile.tileIncome;
+        incomeText.text = "+" + tileIncome.ToString("F2");
     }
 
     private void ShowIcons()

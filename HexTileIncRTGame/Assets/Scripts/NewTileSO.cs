@@ -3,8 +3,8 @@
 [CreateAssetMenu(menuName = "New Tile")]
 public class NewTileSO : ScriptableObject
 {
-    
 
+    public TileID tileID;
     public string tileName;
     public Sprite tileSprite;
     public float tileBaseIncome;

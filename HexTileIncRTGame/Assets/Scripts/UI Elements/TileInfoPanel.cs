@@ -23,8 +23,7 @@ public class TileInfoPanel : MonoBehaviour
             previousSelectedTile.tileHighlight.enabled = false;
         }
         this.selectedTile = selectedTile;
-
-        Debug.Log(Board.instance.placedTiles.IndexOf(selectedTile));
+       
 
         selectedTile.tileHighlight.enabled = true;
 
@@ -37,7 +36,7 @@ public class TileInfoPanel : MonoBehaviour
 
         tileNameText.text = selectedTile.tileName;
 
-        tileTierText.text = selectedTile.tileTier.ToString();
+        tileTierText.text = selectedTile.tileLevel.ToString();
 
         tileIncomeText.text = selectedTile.GetTileIncome().ToString();
 
@@ -51,7 +50,7 @@ public class TileInfoPanel : MonoBehaviour
 
         ShowIcons();
 
-        tileDescriptionText.text = "Gives " + selectedTile.tileAdjacencyBonus.ToString() + "% bonus income to each adjacent tile of same type";
+        tileDescriptionText.text = "Gives " + selectedTile.TileAdjacencyBonus.ToString() + "% bonus income to each adjacent tile of same type";
     }
 
     private void ShowIcons()

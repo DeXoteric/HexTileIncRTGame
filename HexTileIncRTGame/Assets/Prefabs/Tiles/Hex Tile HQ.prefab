@@ -306,13 +306,9 @@ MonoBehaviour:
   selectedTileSO: {fileID: 0}
   tileType: 00000000
   tileName: Headquarter
-  tileSprite: {fileID: 21300000, guid: 410c29f037392584998434af0d66ee63, type: 3}
-  tileHighlight: {fileID: 212869035442938038}
+  tileHighlight: {fileID: 212103958754054964, guid: b1256898cba46e94bb49c9b101a52d7e,
+    type: 2}
   tileBaseIncome: 5
-  tileBaseCost: 0
-  tileTier: 1
-  tileIncome: 0
-  tileAdjacencyBonus: 50
 --- !u!212 &212454418762313402
 SpriteRenderer:
   m_ObjectHideFlags: 1

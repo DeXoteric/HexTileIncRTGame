@@ -2,15 +2,15 @@
 
 public class ToggleHQPanel : MonoBehaviour
 {
-    [SerializeField] private HQPanel hqPanel;
+    [SerializeField] private MainPanel mainPanel;
     [SerializeField] private TileInfoPanel tileInfoPanel;
     [SerializeField] private ChooseTilePanel chooseTilePanel;
 
     public void TogglePanel()
     {
-        hqPanel.gameObject.SetActive(!hqPanel.gameObject.activeInHierarchy);
+        mainPanel.gameObject.SetActive(!mainPanel.gameObject.activeInHierarchy);
 
-        if (hqPanel.gameObject.activeInHierarchy)
+        if (mainPanel.gameObject.activeInHierarchy)
         {
             DeselectTile();
         }

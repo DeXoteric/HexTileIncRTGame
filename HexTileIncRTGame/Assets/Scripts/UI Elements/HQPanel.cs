@@ -25,7 +25,7 @@ public class HQPanel : MonoBehaviour
     private void UpdateTileInfo()
     {
         tileNameText.text = tileHQ.tileName;
-        tileTierText.text = tileHQ.tileTier.ToString();
+        tileTierText.text = tileHQ.tileLevel.ToString();
         tileIncomeText.text = tileHQ.GetTileIncome().ToString();
     }
 }
