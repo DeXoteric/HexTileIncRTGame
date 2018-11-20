@@ -29,7 +29,7 @@ public class ChooseTilePanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tileThreeDescriptionText;
     [SerializeField] private Image[] tileThreeIcons;
 
-    private List<NewTileSO> choosedTilesSO;
+    private List<TileSO> choosedTilesSO;
 
     private float tileOneCost, tileTwoCost, tileThreeCost;
 
@@ -63,9 +63,9 @@ public class ChooseTilePanel : MonoBehaviour
 
     private void OnEnable()
     {
-        if (GameManager.instance.rerollTiles)
+        if (Board.instance.rerollTiles)
         {
-            choosedTilesSO = new List<NewTileSO>();
+            choosedTilesSO = new List<TileSO>();
 
             var tilesSO = Board.instance.tilesSO;
 
@@ -97,7 +97,7 @@ public class ChooseTilePanel : MonoBehaviour
             tileThreeDescriptionText.text = "Gives " + choosedTilesSO[2].tileAdjacencyBonus.ToString() + "% bonus income to each adjacent tile of same type";
             ShowIconsForTileThree();
 
-            GameManager.instance.rerollTiles = false;
+            Board.instance.rerollTiles = false;
         }
     }
 

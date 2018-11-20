@@ -14,5 +14,19 @@ namespace DeXoteric
             EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
             return results.Count > 0;
         }
+
+        public static bool IsOnMobile()
+        {
+            bool value;
+
+#if UNITY_ANDROID || UNITY_IOS
+            value = true;
+#endif
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
+            value = false;
+#endif
+
+            return value;
+        }
     }
 }

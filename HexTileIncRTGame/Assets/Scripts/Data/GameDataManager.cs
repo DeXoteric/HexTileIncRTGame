@@ -9,7 +9,7 @@ public class GameDataManager : MonoBehaviour
 
     [Header("Default Game Values")]
     [SerializeField] float startingMoney;
-    [SerializeField] int startingPrestigeLevel;
+    
 
     private void OnEnable()
     {
@@ -75,27 +75,17 @@ public class GameDataManager : MonoBehaviour
     }
     #endregion
 
-    #region Prestige Level
-    public int GetPrestigeLevel()
-    {
-        return saveData.prestigeLevel;
-    }
-
-    public void SetPrestigeLevel(int prestigeLevel)
-    {
-        saveData.prestigeLevel = prestigeLevel;
-    }
-    #endregion
+   
 
     private void SetDefaultValuesForNewGame()
     {
         SetCurrentMoney(startingMoney);
-        SetPrestigeLevel(startingPrestigeLevel);
+        
     }
 
     private void SetDefaultValuesForSoftReset()
     {
         SetCurrentMoney(startingMoney);
-        SetPrestigeLevel(GameManager.instance.prestigeLevel + 1);
+        
     }
 }

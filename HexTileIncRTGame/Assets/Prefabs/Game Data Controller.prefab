@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4434405216142374}
-  - component: {fileID: 114052669461804892}
+  - component: {fileID: 114403067936345178}
   m_Layer: 0
   m_Name: Game Data Controller
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114052669461804892
+--- !u!114 &114403067936345178
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,5 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56515a3bff647a348b9f9dc28d680a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMoney: 110
-  startingPrestigeLevel: 1
+  startingMoney: 100

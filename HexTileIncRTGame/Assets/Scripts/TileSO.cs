@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "New Tile")]
-public class NewTileSO : ScriptableObject
+public class TileSO : ScriptableObject
 {
 
     public TileID tileID;

@@ -1,6 +1,5 @@
 ﻿using DeXoteric;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CameraPan : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class CameraPan : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.instance.IsOnMobile)
+        if (Utils.IsOnMobile())
         {
             cameraPanSpeed = cameraMobilePanSpeed;
         }

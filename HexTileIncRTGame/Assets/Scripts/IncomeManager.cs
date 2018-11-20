@@ -21,29 +21,7 @@ public class IncomeManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space)) //TODO remove for final build
         {
-            UpdateTotalOutputs();
-            UpdateCurrentResources();
-            UIManager.instance.UpdateOutputDataDisplay();
+            //TODO Increase money cheat hax for testing
         }
-    }
-
-    public void UpdateTotalOutputs()
-    {
-        TotalIncome = 0;
-
-        foreach (var tile in Board.instance.placedTiles)
-        {
-            TotalIncome += tile.GetComponent<Tile>().GetTileIncome();
-        }
-    }
-
-    public void UpdateCurrentResources()
-    {
-        CurrentMoney += TotalIncome;
-    }
-
-    public void RemoveFromCurrentMoney(float moneyToPay)
-    {
-        CurrentMoney -= moneyToPay;
     }
 }

@@ -8,9 +8,7 @@
         gameObject.name = tileName;
         tileLevel = 1;
 
-        GameManager.instance.placedTiles += 1;
-
-        RefreshData();
-        RefreshDataDisplay();
+        Board.instance.placedTiles += 1;
+        
     }
 }

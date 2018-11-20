@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4969373392894938}
-  - component: {fileID: 114700388736153914}
+  - component: {fileID: 114461706417067866}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114700388736153914
+--- !u!114 &114461706417067866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,18 +55,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e73c9e8dc4eb3f84cab21da7715eec25, type: 2}
   - {fileID: 11400000, guid: 3a0695d296f49e044b8e62fe608fe20c, type: 2}
   hqTile: {fileID: 1891224679863772, guid: 81c8114aa80d50b4ea0723e48896eb37, type: 2}
-  tileInfoPanel: {fileID: 0}
-  chooseTilePanel: {fileID: 0}
   tilePlacementMask:
     serializedVersion: 2
     m_Bits: 512
-  tileInfoMask:
-    serializedVersion: 2
-    m_Bits: 1024
   tileTemplatePrefab: {fileID: 1154361871316068, guid: b1256898cba46e94bb49c9b101a52d7e,
     type: 2}
   selectedTile: {fileID: 0}
   selectedTileSO: {fileID: 0}
   unusedHexes: []
   activeHexes: []
-  placedTiles: []
+  placedTilesList: []
+  placedTiles: 0
+  rerollTiles: 1

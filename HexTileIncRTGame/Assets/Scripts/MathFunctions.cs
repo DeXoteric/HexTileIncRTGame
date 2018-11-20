@@ -7,8 +7,8 @@ public class MathFunctions
 
     public static float CalculateTileCost(float baseTileCost)
     {
-        var placedTiles = GameManager.instance.placedTiles;
-        var prestige = GameManager.instance.prestigeLevel;
+        var placedTiles = Board.instance.placedTiles;
+        var prestige = 1; //TODO get it from somewhere
 
         float tileCost = baseTileCost * Mathf.Pow(MULTIPLIER_1_15, placedTiles - 1);
         float bonusFromPrestige = tileCost * (prestige - 1) * 10 / 100;
@@ -19,7 +19,7 @@ public class MathFunctions
 
     public static float CalculateTileIncome(float baseTileIncome, int tileLevel, float totalMultiplier)
     {
-        var prestige = GameManager.instance.prestigeLevel;
+        var prestige = 1; //TODO get it from somewhere
 
         float baseTileIncomeWithTileLevelBonus = baseTileIncome + (tileLevel - 1);
         float tileIncome = baseTileIncomeWithTileLevelBonus + (baseTileIncomeWithTileLevelBonus * totalMultiplier / 100);

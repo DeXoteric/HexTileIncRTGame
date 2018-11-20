@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4245398101494816}
-  - component: {fileID: 114852851210051302}
+  - component: {fileID: 114625984770274986}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114852851210051302
+--- !u!114 &114625984770274986
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,8 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f2c9951909cd143a8f0b7e963553da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeTileText: {fileID: 0}
-  cancelPlacementButton: {fileID: 0}
-  currentMoneyText: {fileID: 0}
-  incomeText: {fileID: 0}
   tileTypeIcons: []

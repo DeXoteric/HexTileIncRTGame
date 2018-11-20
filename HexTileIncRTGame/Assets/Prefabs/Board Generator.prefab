@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4676158221845058}
-  - component: {fileID: 114602632844619636}
+  - component: {fileID: 114888512442781114}
   m_Layer: 0
   m_Name: Board Generator
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114602632844619636
+--- !u!114 &114888512442781114
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4445b726f0e2c5b4291f9911053abe67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexTilePrefab: {fileID: 1460517147424520, guid: b452cf96d65b5a44c9004bbc1dd9fff2,
-    type: 2}
-  mapWidth: 20
-  mapHeight: 20
+  hexPrefab: {fileID: 1460517147424520, guid: b452cf96d65b5a44c9004bbc1dd9fff2, type: 2}
+  mapWidth: 10
+  mapHeight: 10

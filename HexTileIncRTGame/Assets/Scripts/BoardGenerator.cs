@@ -2,7 +2,7 @@
 
 public class BoardGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject hexTilePrefab;
+    [SerializeField] private GameObject hexPrefab;
 
     [SerializeField] private int mapWidth;
     [SerializeField] private int mapHeight;
@@ -36,18 +36,18 @@ public class BoardGenerator : MonoBehaviour
         {
             for (int x = mapXMin; x < mapXMax; x++)
             {
-                GameObject hexTile = Instantiate(hexTilePrefab);
+                GameObject hex = Instantiate(hexPrefab);
 
                 if (y % 2 == 0)
                 {
-                    hexTile.transform.position = new Vector2(x * tileXOffset, y * tileYOffset);
+                    hex.transform.position = new Vector2(x * tileXOffset, y * tileYOffset);
                 }
                 else
                 {
-                    hexTile.transform.position = new Vector2(x * tileXOffset + tileXOffset / 2, y * tileYOffset);
+                    hex.transform.position = new Vector2(x * tileXOffset + tileXOffset / 2, y * tileYOffset);
                 }
 
-                SetTileInfo(hexTile, x, y);
+                SetTileInfo(hex, x, y);
             }
         }
     }

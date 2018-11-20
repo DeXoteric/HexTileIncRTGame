@@ -2,7 +2,7 @@
 
 public class Tile : MonoBehaviour
 {
-    [HideInInspector] public NewTileSO selectedTileSO;
+    [HideInInspector] public TileSO selectedTileSO;
 
     public TileID tileID;
     public TileType[] tileType;
@@ -35,12 +35,11 @@ public class Tile : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = tileSprite;
 
         var tileCost = MathFunctions.CalculateTileCost(tileBaseCost);
-        IncomeManager.instance.RemoveFromCurrentMoney(tileCost);
+        
 
-        GameManager.instance.placedTiles += 1;
+        Board.instance.placedTiles += 1;
 
-        RefreshData();
-        RefreshDataDisplay();
+       
     }
 
     public float GetTileIncome()
@@ -56,28 +55,15 @@ public class Tile : MonoBehaviour
     {
         adjacencyMultiplier += multiplier;
 
-        RefreshData();
-        RefreshDataDisplay();
+        
     }
 
     public void AddGlobalMultiplier(float multiplier)
     {
         globalMultiplier += multiplier;
 
-        RefreshData();
-        RefreshDataDisplay();
+        
     }
 
-    public void RefreshData()
-    {
-        totalMultiplier = adjacencyMultiplier + globalMultiplier;
-
-        tileIncome = GetTileIncome();
-    }
-
-    public void RefreshDataDisplay()
-    {
-        IncomeManager.instance.UpdateTotalOutputs();
-        UIManager.instance.UpdateOutputDataDisplay();
-    }
+    
 }
